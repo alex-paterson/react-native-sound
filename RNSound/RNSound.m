@@ -42,7 +42,9 @@
 
 -(NSMutableDictionary*) playerPool {
   if (!_playerPool) {
-    _playerPool = [NSMutableDictionary new];
+    @synchronized(self) {
+      _playerPool = [NSMutableDictionary new];
+    }
   }
   return _playerPool;
 }
